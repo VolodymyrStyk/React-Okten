@@ -1,5 +1,5 @@
 import './App.css';
-import User from "./components/user/user";
+import User from "./components/user/user.component";
 import {useState} from "react";
 
 let usersList = [
@@ -17,25 +17,31 @@ let usersList = [
 ];
 
 
-
 function App() {
-    let [users, setUsers] = useState(usersList);
+    let [getUser,setUser] = useState(usersList);
 
-    const deleteUser = () => {
-        users.pop();
-        console.log('click ');
-        setUsers([...users]);
-    };
+    let deleteFirstUser = () => {
+        getUser.shift();
+        setUser([...getUser]);
+    }
+    let deleteLastUser = () => {
+        getUser.pop();
+        setUser([...getUser]);
+    }
+    let deleteCurrentUser = (id) => {
+        getUser.splice(id,1);
+        setUser([...getUser]);
+    }
 
     return (
         <div>
+            <button onClick={deleteFirstUser}>Delete First User</button>
+            <button onClick={deleteLastUser}>Delete last User</button>
             {
-                users.map((value, index) =>
-                    <User key={index}
-                          {...value}
-                    />)
+                getUser.map((value, index) =>
+                    <User key={index} {...value} id = {index}/>
+                )
             }
-            <button onClick={deleteUser}>delete User</button>
         </div>
     );
 }
