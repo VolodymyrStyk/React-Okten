@@ -19,6 +19,9 @@ let usersList = [
 
 
 function App() {
+    let [counter,setCounter] = useState(0);
+    const increment = ()=> setCounter(++counter);
+
     let [users, setUsers] = useState(usersList);
 
     const deleteUser = () => {
@@ -29,13 +32,19 @@ function App() {
 
     return (
         <div>
-            {
-                users.map((value, index) =>
-                    <User key={index}
-                          {...value}
-                    />)
-            }
-            <button onClick={deleteUser}>delete User</button>
+            <div>
+                counter is {counter}
+                <button onClick={increment}>Click count</button>
+            </div>
+            <div>
+                {
+                    users.map((value, index) =>
+                        <User key={index}
+                              {...value}
+                        />)
+                }
+                <button onClick={deleteUser}>delete User</button>
+            </div>
         </div>
     );
 }
