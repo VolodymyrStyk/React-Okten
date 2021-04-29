@@ -1,0 +1,10 @@
+div .car {
+    border: 1px solid salmon;
+    width: 200px;
+    min-height: 400px;
+    margin: 10px;
+    padding: 10px;
+}
+.car-img {
+    width: 200px;
+}
