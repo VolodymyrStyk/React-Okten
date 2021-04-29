@@ -1,0 +1,15 @@
+.car{
+    width: 250px;
+    border: 1px solid blueviolet;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    background: silver;
+}
+.car img{
+    width: 250px;
+    height: 150px;
+}
+.car h3{
+    text-align: center;
+}

@@ -1,42 +1,88 @@
 import './App.css';
 import {useState} from "react";
+import Car from "./components/car/car.component";
 
+let carsArray = [
+    {
+        name: 'Ford',
+        model: 'Focus',
+        color: 'White',
+        engine: 'diesel',
+        speed: 300,
+        src: './img/ford.jpg'
+    },
+    {
+        name: 'Opel',
+        model: 'Astra',
+        color: 'Black',
+        engine: 'diesel',
+        speed: 310,
+        src: './img/opel.jpg'
+    }, {
+        name: 'Renault',
+        model: 'Megan',
+        color: 'Silver',
+        engine: 'diesel',
+        speed: 290,
+        src: './img/renault.jpg'
+    }, {
+        name: 'Volkswagen',
+        model: 'Golf',
+        color: 'Green',
+        engine: 'benzin',
+        speed: 330,
+        src: './img/volkswagen.jpg'
+    }, {
+        name: 'Audi',
+        model: 'A6',
+        color: 'Dark Gray',
+        engine: 'benzin',
+        speed: 350,
+        src: './img/audi.jpg'
+    }
+];
+let cars = JSON.stringify(carsArray);
+cars = JSON.parse(cars);
+cars.map((value, index) => value.id = index);
+let saveArr = [];
 
 function App() {
-    let [getCounter, setCounter] = useState(0);
-
-    let increment = () => {
-        getCounter++;
-        setCounter(getCounter);
+    let [setCars, getCars] = useState(cars);
+    let removeFirst = () => {
+        let car = setCars.shift();
+        saveArr.unshift(car);
+        getCars([...setCars]);
     }
-
-    let decrement = () => {
-        getCounter--;
-        setCounter(getCounter);
+    let removeLast = () => {
+        let car = setCars.pop();
+        saveArr.push(car);
+        getCars([...setCars]);
     }
-    let reset = () => {
-        getCounter = 0;
-        setCounter(getCounter);
+    let addFirst = () => {
+        if (saveArr.length) {
+            let car = saveArr.shift();
+            setCars.unshift(car);
+            getCars([...setCars]);
+        }
     }
-    let increaseStep = () => {
-        getCounter += 5;
-        setCounter(getCounter);
+    let addLast = () => {
+        if (saveArr.length) {
+            let car = saveArr.pop();
+            setCars.push(car);
+            getCars([...setCars]);
+        }
     }
-    let decreaseStep = () => {
-        getCounter -= 5;
-        setCounter(getCounter);
-    }
-
     return (
         <div>
-            <div>This is counter: {getCounter}</div>
-            <button onClick={increment}>Increment</button>
-            <button onClick={increaseStep}>Increment + 5</button>
+            <button onClick={removeFirst}>Remove First Car</button>
+            <button onClick={removeLast}>Remove Last Car</button>
             <br/>
-            <button onClick={decrement}>Decrement</button>
-            <button onClick={decreaseStep}>Increment - 5</button>
-            <br/>
-            <button onClick={reset}>Reset</button>
+            <button onClick={addFirst}>Add First Car</button>
+            <button onClick={addLast}>Add Last Car</button>
+            <div className={'cars-wrap'}>{
+                setCars.map((value) => <Car key={value.id} {...value}/>
+                )
+            }</div>
         </div>
     );
 }
