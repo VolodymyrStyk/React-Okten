@@ -5,9 +5,11 @@
     padding: 10px;
     border: 1px solid black;
     width: fit-content;
+    background: lightgray;
 }
 .single-user-box{
     padding: 10px;
     border: 1px solid tomato;
     width: fit-content;
+    background: lightblue;
 }

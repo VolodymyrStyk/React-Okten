@@ -31,13 +31,13 @@ export default function Users() {
             </div>
             <div className={'single-user-box'}>
                 {
-                    singleUser ? (<h2>{singleUser.id} -
-                        {singleUser.username} <br/>
+                    singleUser ? (<div>
+                        <h3>{singleUser.id} - {singleUser.username}</h3>
                         {singleUser.phone} <br/>
                         {singleUser.website} <br/>
                         {singleUser.company.name} <br/>
                         {singleUser.address.city} <br/>
-                    </h2>) : (<p>User should be there</p>)
+                    </div>) : (<p>User should be there</p>)
                 }
             </div>
         </div>
