@@ -10,4 +10,9 @@
     width: 350px;
     border: 1px solid green;
     background: lightgreen;
+    padding: 10px;
+}
+.posts-details-one{
+    position: sticky;
+    top: 20px;
 }

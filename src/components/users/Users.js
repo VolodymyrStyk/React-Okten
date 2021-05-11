@@ -13,7 +13,6 @@ export default function Users() {
 
     const search = (id) => {
         const checkedUser = users.find(value => value.id === id);
-        console.log(checkedUser);
         setSingleUser(checkedUser);
     }
 
@@ -31,10 +30,10 @@ export default function Users() {
                 {
                     singleUser ? (<div>
                         <h3>{singleUser.id} - {singleUser.username}</h3>
-                        {singleUser.phone} <br/>
-                        {singleUser.website} <br/>
-                        {singleUser.company.name} <br/>
-                        {singleUser.address.city} <br/>
+                        <b>Phone:</b> {singleUser.phone} <br/>
+                        <b>Website:</b> {singleUser.website} <br/>
+                        <b>Company:</b> {singleUser.company.name} <br/>
+                        <b>Address:</b> {singleUser.address.city} <br/>
                     </div>) : (<p>User should be there</p>)
                 }
             </div>

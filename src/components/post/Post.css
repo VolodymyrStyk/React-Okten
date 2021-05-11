@@ -1,3 +1,4 @@
-.wrap-post{
-    width: 300px;
+.one-post{
+    border-bottom: 1px solid darkred;
+    padding: 10px;
 }

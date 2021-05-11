@@ -26,12 +26,12 @@ export default function Posts() {
             </div>
             <div className={'posts-details'}>
                 {
-                    singlePost ? (<div>
+                    singlePost ? (<div className={'posts-details-one'}>
                             <h4>{singlePost.id} - {singlePost.userId}</h4>
                         <h4>{singlePost.title}</h4>
                         <p>{singlePost.body}</p>
                         </div>) :
-                        (<div>Post details should be here.</div>)
+                        (<div className={'posts-details-one'}>Post details should be here.</div>)
                 }
             </div>
         </div>
