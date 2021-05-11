@@ -12,9 +12,6 @@ import {
 function App() {
     return (
         <div>
-            {/*<Users/>*/}
-            {/*  <Posts/>*/}
-
             <Router>
                 <div><Link to={'/'}><button>Home</button></Link></div>
                 <div><Link to={'/users'}><button>Users</button></Link></div>
