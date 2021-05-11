@@ -3,10 +3,9 @@ import {getUsers} from "../../services/api.service";
 import User from "../user/User";
 import './Users.css'
 
-export default function Users() {
-
+export default function Users({match:{url}}) {
+    console.log(url);
     const [users, setUsers] = useState([]);
-
     useEffect(() => {
         getUsers().then(value => setUsers([...value.data]));
     }, []);
@@ -17,6 +16,7 @@ export default function Users() {
                 users.map(value => <User
                     key={value.id}
                     item={value}
+                    url={url}
                 />)
             }</div>
         </div>
