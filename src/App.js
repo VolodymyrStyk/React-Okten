@@ -22,7 +22,7 @@ export default function App() {
             <div>
                 <Switch>
                     <Route path={'/'}/>
-                    <Route path={'/users'} render={() => <h1>Hello</h1>}/>
+                    <Route path={'/users'} render={() => (<Users/>)}/>
                 </Switch>
             </div>
         </Router>
