@@ -1,5 +1,6 @@
 .wrap-user{
     display: flex;
+    justify-content: space-between;
 }
 .details-btn{
     height: 30px;

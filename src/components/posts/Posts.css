@@ -1,0 +1,13 @@
+.posts-wrap{
+    display: flex;
+}
+.posts-info{
+    width: 300px;
+    border: 1px solid red;
+    background: lightpink;
+}
+.posts-details{
+    width: 350px;
+    border: 1px solid green;
+    background: lightgreen;
+}
