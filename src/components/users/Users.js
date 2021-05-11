@@ -15,6 +15,7 @@ export default function Users() {
     const choseUser = (id) => {
         const findUser = users.find(value => value.id === id);
         setChosenUser(findUser);
+        console.log(id+' user');
     }
 
     return (
