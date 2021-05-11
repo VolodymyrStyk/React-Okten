@@ -7,6 +7,7 @@ import {
     Link
 } from "react-router-dom";
 import Characters from "./components/characters/Characters";
+import Inventories from "./components/Inventories/Inventories";
 
 export default function App() {
     return (
@@ -24,7 +25,7 @@ export default function App() {
                 <Switch>
                     <Route exact={true} path={'/'}/>
                     <Route exact={true} path={'/characters'} render={() => <Characters/>}/>
-                    <Route exact={true} path={'/inventory'}/>
+                    <Route exact={true} path={'/inventory'} render={() => <Inventories/>}/>
                 </Switch>
             </Router>
         </div>

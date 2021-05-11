@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import {getInventories} from "../../services/api.service";
-import './Characters.css'
+import './Inventories.css'
 import Inventory from "../inventory/Inventory";
 
-export default function Characters() {
+export default function Inventories() {
     const [inventories, setInventories] = useState([]);
     useEffect(() => {
         getInventories().then(value => setInventories([...value.data]));
