@@ -10,22 +10,17 @@ import {
 
 export default function App() {
     return (
-        <Router>
-            <div>
-                <div><Link to={'/'}>
-                    <button>Home</button>
-                </Link></div>
-                <div><Link to={'/users'}>
-                    <button>Users</button>
-                </Link></div>
-            </div>
-            <div>
+        <div>
+            <Router>
+                <div><Link to={'/'}><button>Home</button></Link></div>
+                <div><Link to={'/users'}><button>Users</button></Link></div>
+                <div><Link to={'/posts'}><button>Posts</button></Link></div>
                 <Switch>
-                    <Route path={'/'}/>
                     <Route path={'/users'} render={() => (<Users/>)}/>
+                    <Route path={'/posts'} render={() => (<div>No Posts</div>)}/>
                 </Switch>
-            </div>
-        </Router>
+            </Router>
+        </div>
     );
 }
 
