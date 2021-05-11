@@ -1,15 +1,12 @@
-.wrap{
+.wrap-users{
     display: flex;
 }
-.users-box{
-    padding: 10px;
-    border: 1px solid black;
+.user-details{
+    position: sticky;
+    top: 20px;
+    border: 1px solid grey;
     width: fit-content;
-    background: lightgray;
-}
-.single-user-box{
-    padding: 10px;
-    border: 1px solid tomato;
-    width: fit-content;
-    background: lightblue;
+    height: fit-content;
+    padding: 20px;
+    background: darkgray;
 }

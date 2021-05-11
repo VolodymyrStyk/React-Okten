@@ -1,42 +1,34 @@
 import {useEffect, useState} from "react";
+import {getUsers} from "../../services/api.service";
 import User from "../user/User";
 import './Users.css'
-import axiosInstance from "../../services/api";
-
 
 export default function Users() {
+
     const [users, setUsers] = useState([]);
-    const [singleUser, setSingleUser] = useState(null);
+    const [chosenUser, setChosenUser] = useState(null);
+
     useEffect(() => {
-        axiosInstance.get('/users').then(value => setUsers([...value.data]))
+        getUsers().then(value => setUsers([...value.data]));
     }, []);
 
-    const search = (id) => {
-        const checkedUser = users.find(value => value.id === id);
-        setSingleUser(checkedUser);
+    const choseUser = (id) => {
+        const findUser = users.find(value => value.id === id);
+        setChosenUser(findUser);
     }
 
     return (
-        <div className={'wrap'}>
-            <div className={'users-box'}>
-                {
-                    users.map(value => <User
-                        key={value.id}
-                        item={value}
-                        search={search}/>)
-                }
-            </div>
-            <div className={'single-user-box'}>
-                {
-                    singleUser ? (<div>
-                        <h3>{singleUser.id} - {singleUser.username}</h3>
-                        <b>Phone:</b> {singleUser.phone} <br/>
-                        <b>Website:</b> {singleUser.website} <br/>
-                        <b>Company:</b> {singleUser.company.name} <br/>
-                        <b>Address:</b> {singleUser.address.city} <br/>
-                    </div>) : (<p>User should be there</p>)
-                }
-            </div>
+        <div className={'wrap-users'}>
+            <div>{
+                users.map(value => <User
+                    key={value.id}
+                    item={value}
+                    chosenUser={choseUser}
+                />)
+            }</div>
+            <div className={'user-details'}>{
+                chosenUser && <div>{chosenUser.id} - {chosenUser.email}</div>
+            }</div>
         </div>
     );
 }

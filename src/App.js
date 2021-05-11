@@ -1,6 +1,5 @@
 import './App.css';
 import Users from "./components/users/Users";
-import Posts from "./components/posts/Posts";
 import React from "react";
 import {
     BrowserRouter as Router,
@@ -9,20 +8,24 @@ import {
     Link
 } from "react-router-dom";
 
-function App() {
+export default function App() {
     return (
-        <div>
-            <Router>
-                <div><Link to={'/'}><button>Home</button></Link></div>
-                <div><Link to={'/users'}><button>Users</button></Link></div>
-                <div><Link to={'/posts'}><button>Posts</button></Link></div>
+        <Router>
+            <div>
+                <div><Link to={'/'}>
+                    <button>Home</button>
+                </Link></div>
+                <div><Link to={'/users'}>
+                    <button>Users</button>
+                </Link></div>
+            </div>
+            <div>
                 <Switch>
-                    <Route path={'/users'} render={() => (<Users/>)}/>
-                    <Route path={'/posts'} render={() => (<Posts/>)}/>
+                    <Route path={'/'}/>
+                    <Route path={'/users'} render={() => <h1>Hello</h1>}/>
                 </Switch>
-            </Router>
-        </div>
+            </div>
+        </Router>
     );
 }
 
-export default App;
