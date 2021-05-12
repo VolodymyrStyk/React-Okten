@@ -1,0 +1,8 @@
+.wrap-inventory-detail{
+    width: fit-content;
+    border: 2px solid black;
+    background: lightgray;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}

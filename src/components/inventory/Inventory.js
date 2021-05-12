@@ -8,25 +8,15 @@ import {
 import InventoryDetails from "../InventoryDetails/InventoryDetails";
 import React from "react";
 
-export default function Inventory({item, url, clear}) {
-    console.log(item);
+export default function Inventory({item, url}) {
     return (
-
             <div className={'wrap-inventory'}>
                 <div>{item.title}</div>
                 <div>{item.category}</div>
                 <div>{item.price}</div>
                 <div>
-                    <button ><Link to={url + '/' + item.id}>Show details</Link>
-                    </button>
-                    <Switch>
-                        <Route exact={true} path={url + '/' + item.id}
-                               render={() => {
-                                   return <InventoryDetails items={item} clear={clear}/>
-                               }}/>
-                    </Switch>
+                    <button ><Link to={url + '/' + item.id}>Show details</Link></button>
                 </div>
             </div>
-
     );
 }

@@ -15,7 +15,7 @@ export default function Characters() {
             <h2>Characters Page</h2>
             <div className={'wrap-characters'}>
                 {
-                    charactersFiltred.map(value => <Character key={value.id} item={value}/>)
+                    characters.map(value => <Character key={value.id} item={value}/>)
                 }
             </div>
         </div>

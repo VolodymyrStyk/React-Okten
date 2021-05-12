@@ -1,11 +1,10 @@
 import axios from "axios";
 
-let options = {
+const options = {
     baseURL: 'https://api.sampleapis.com/futurama',
-
 };
 
-let axiosInstance = axios.create(options);
+const axiosInstance = axios.create(options);
 
 const getCharacters = () => {
     return axiosInstance.get('/characters');
@@ -15,5 +14,5 @@ const getInventories = (id) => {
 }
 
 export {
-    getCharacters,getInventories,axiosInstance
+    getCharacters, getInventories, axiosInstance
 }

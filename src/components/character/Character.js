@@ -6,14 +6,15 @@ import {
 } from "react-router-dom";
 import './Character.css'
 
-export default function Character({item}) {
+export default function Character({item = {}}) {
+    const { name, age, images } = item;
 // console.log(item.name.first);
   return (
     <div className={'wrap-character'}>
         <div>
-            {item.name.first}  {item.name.last} - {item.age}
+            {name?.first}  {name?.last} - {age}
         </div>
-        <img src={item.images.main} alt=""/>
+        <img src={images?.main} alt=""/>
         <div>
             <button><Link>Show details</Link></button>
         </div>

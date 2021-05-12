@@ -1,18 +1,22 @@
 import {useEffect, useState} from "react";
 import {getInventories} from "../../services/api.service";
+import "./InventoryDetails.css"
 
-export default function InventoryDetails({items}) {
-
-    // console.log(props);
-    const {title, category, description, slogan, price, stock, id} = items;
+export default function InventoryDetails({ items = {},props}) {
+    const {match:{params:{id:itemId}}} = props;
+    const [inventories, setInventories] = useState([]);
+    useEffect(() => {
+        getInventories().then(value => setInventories([...value.data]));
+    }, []);
+    const inventoryFilter = inventories.find(value => value.id === Number(itemId))
     return (
-        <div>
+        <div className={'wrap-inventory-detail'}>
             <h3>Inventory Details:</h3>
-            <h2>{id}:{title}</h2>
-            <p>{category}</p>
-            <p>{description}</p>
-            <p>{slogan}</p>
-            <p>Price: {price}; Stock: {stock};</p>
+            <h2>{inventoryFilter?.id}:{inventoryFilter?.title}</h2>
+            <p>{inventoryFilter?.category}</p>
+            <p>{inventoryFilter?.description}</p>
+            <p>{inventoryFilter?.slogan}</p>
+            <p>Price: {inventoryFilter?.price}; Stock: {inventoryFilter?.stock};</p>
         </div>
     );
 }
