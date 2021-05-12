@@ -3,12 +3,6 @@ import {getInventories} from "../../services/api.service";
 
 export default function InventoryDetails({items}) {
 
-    const [inventoriesDetails, setInventoriesDetails] = useState([]);
-    const [inventories, setInventories] = useState([]);
-    useEffect(() => {
-        getInventories().then(value => setInventories([...value.data]));
-    }, []);
-
     // console.log(props);
     const {title, category, description, slogan, price, stock, id} = items;
     return (

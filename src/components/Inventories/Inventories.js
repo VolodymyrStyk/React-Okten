@@ -11,6 +11,7 @@ export default function Inventories({props}) {
     }, []);
 
     const clearScreen = () => {
+
         setInventories([]);
     }
 
