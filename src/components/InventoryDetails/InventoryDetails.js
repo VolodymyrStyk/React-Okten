@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {getInventories} from "../../services/api.service";
 import "./InventoryDetails.css"
 
-export default function InventoryDetails({ items = {},props}) {
+export default function InventoryDetails({props}) {
     const {match:{params:{id:itemId}}} = props;
     const [inventories, setInventories] = useState([]);
     useEffect(() => {

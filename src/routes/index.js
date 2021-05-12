@@ -3,6 +3,9 @@ import Characters from "../components/characters/Characters";
 import Inventories from "../components/Inventories/Inventories";
 import React from "react";
 import InventoryDetails from "../components/InventoryDetails/InventoryDetails";
+import Character from "../components/character/Character";
+import * as PropTypes from "prop-types";
+import CharacterDetails from "../components/characterDetails/CharacterDetails";
 
 const Routes = () => (
     <Router>
@@ -17,12 +20,13 @@ const Routes = () => (
         </Link></div>
         <Switch>
             <Route exact={true} path={'/'} render={() => <h2>Home Page</h2>}/>
-            <Route exact={true} path={'/characters'} render={() => <Characters/>}/>
+            <Route exact={true} path={'/characters'}component={Characters}/>
             <Route exact={true} path={'/inventory'} component={Inventories}/>
-            {/*<Route exact={true} path="/inventory/:id" component={InventoryDetails}/>*/}
             <Route exact={true} path={'/inventory/:id'} render={(props) => {
-                console.log(props);
                 return <InventoryDetails props={props}/>
+            }}/>
+            <Route exact={true} path={'/characters/:id'} render={(props) => {
+                return <CharacterDetails props={props}/>
             }}/>
         </Switch>
     </Router>

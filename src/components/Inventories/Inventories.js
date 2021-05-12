@@ -4,13 +4,11 @@ import './Inventories.css'
 import Inventory from "../inventory/Inventory";
 
 export default function Inventories(props) {
-    console.log(props);
     const {match: {url}} = props;
     const [inventories, setInventories] = useState([]);
     useEffect(() => {
         getInventories().then(value => setInventories([...value.data]));
     }, []);
-
     return (
         <div>
             <h2>Inventories Page</h2>
