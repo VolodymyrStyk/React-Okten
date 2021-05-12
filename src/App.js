@@ -14,15 +14,9 @@ export default function App() {
     return (
         <div>
             <Router>
-                <div><Link to={'/'}>
-                    <button>Home</button>
-                </Link></div>
-                <div><Link to={'/characters'}>
-                    <button>Characters</button>
-                </Link></div>
-                <div><Link to={'/inventory'}>
-                    <button>Inventory</button>
-                </Link></div>
+                <div><Link to={'/'}><button>Home</button></Link></div>
+                <div><Link to={'/characters'}><button>Characters</button></Link></div>
+                <div><Link to={'/inventory'}><button>Inventory</button></Link></div>
                 <Switch>
                     <Route exact={true} path={'/'} render={() => <h2>Home Page</h2>}/>
                     <Route exact={true} path={'/characters'} render={() => <Characters/>}/>

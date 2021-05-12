@@ -8,13 +8,10 @@ import {
 import InventoryDetails from "../InventoryDetails/InventoryDetails";
 import React from "react";
 
-
 export default function Inventory({item, url, clear}) {
-
-
     console.log(item);
     return (
-        <Router>
+
             <div className={'wrap-inventory'}>
                 <div>{item.title}</div>
                 <div>{item.category}</div>
@@ -30,6 +27,6 @@ export default function Inventory({item, url, clear}) {
                     </Switch>
                 </div>
             </div>
-        </Router>
+
     );
 }
