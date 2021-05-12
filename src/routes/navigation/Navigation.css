@@ -1,0 +1,7 @@
+.nam-menu{
+    border: 1px solid #282c34;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 20px 40px;
+}
