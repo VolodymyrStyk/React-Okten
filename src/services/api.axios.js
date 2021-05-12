@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios";
 
 const option = {
-    baseURL: "https://jsonplaceholder.typicode.com/";
+    baseURL: "https://jsonplaceholder.typicode.com/"
 }
 const axiosInstace = axios.create(option);
 const getUsers = () => {
