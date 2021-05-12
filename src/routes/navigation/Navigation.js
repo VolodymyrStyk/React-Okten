@@ -1,10 +1,10 @@
-import {Link,Route} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
 import './Navigation.css';
 import {Home} from "../../components/home/Home";
 import {Users} from "../../components/users/Users";
 
 export const Navigation = () => {
-    return(
+    return (
         <div>
             <ul className={'nam-menu'}>
                 <li>
@@ -23,8 +23,10 @@ export const Navigation = () => {
                     </Link>
                 </li>
             </ul>
-            <Route exact path={'/'} component={Home}/>
-            <Route exact path={'/users'} component={Users}/>
+            <Switch>
+                <Route exact path={'/'} component={Home}/>
+                <Route exact path={'/users'} component={Users}/>
+            </Switch>
         </div>
     );
 }
