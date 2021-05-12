@@ -1,16 +1,35 @@
 import './Inventory.css'
-import {Link} from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+import InventoryDetails from "../InventoryDetails/InventoryDetails";
+import React from "react";
 
 
-export default function Inventory({item}) {
+export default function Inventory({item, url, clear}) {
+
+
+    console.log(item);
     return (
-        <div className={'wrap-inventory'}>
-            <div>{item.title}</div>
-            <div>{item.category}</div>
-            <div>{item.price}</div>
-            <div>
-                <button><Link>Show details</Link></button>
+        <Router>
+            <div className={'wrap-inventory'}>
+                <div>{item.title}</div>
+                <div>{item.category}</div>
+                <div>{item.price}</div>
+                <div>
+                    <button ><Link to={url + '/' + item.id}>Show details</Link>
+                    </button>
+                    <Switch>
+                        <Route exact={true} path={url + '/' + item.id}
+                               render={() => {
+                                   return <InventoryDetails items={item} clear={clear}/>
+                               }}/>
+                    </Switch>
+                </div>
             </div>
-        </div>
+        </Router>
     );
 }

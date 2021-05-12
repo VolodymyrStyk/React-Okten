@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getCharacters} from "../../services/api.service";
 import Character from "../character/Character";
 import './Characters.css'
@@ -12,6 +12,7 @@ export default function Characters() {
     return (
 
         <div>
+            <h2>Characters Page</h2>
             <div className={'wrap-characters'}>
                 {
                     charactersFiltred.map(value => <Character key={value.id} item={value}/>)

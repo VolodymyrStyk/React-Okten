@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Characters from "./components/characters/Characters";
 import Inventories from "./components/Inventories/Inventories";
+import InventoryDetails from "./components/InventoryDetails/InventoryDetails";
 
 export default function App() {
     return (
@@ -23,9 +24,11 @@ export default function App() {
                     <button>Inventory</button>
                 </Link></div>
                 <Switch>
-                    <Route exact={true} path={'/'}/>
+                    <Route exact={true} path={'/'} render={() => <h2>Home Page</h2>}/>
                     <Route exact={true} path={'/characters'} render={() => <Characters/>}/>
-                    <Route exact={true} path={'/inventory'} render={() => <Inventories/>}/>
+                    <Route exact={true} path={'/inventory'} render={(props) => {
+                        return <Inventories props={props}/>
+                    }}/>
                 </Switch>
             </Router>
         </div>
