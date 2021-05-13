@@ -1,3 +1,7 @@
+import React from "react";
+import {
+    useLocation
+} from "react-router-dom";
 import axios from 'axios'
 
 const option = {
@@ -7,15 +11,19 @@ const axiosInstance = axios.create(option);
 const getUsers = () => {
     return axiosInstance.get('/users');
 }
-const getUnknown = ()=>{
+const getUnknown = () => {
     return axiosInstance.get('/unknown');
 }
-const getRegister = ()=>{
+const getRegister = () => {
     return axiosInstance.get('/register');
 }
-const getLogin = ()=>{
+const getLogin = () => {
     return axiosInstance.get('/login');
 }
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
 export {
-    axiosInstance, getUsers, getUnknown, getLogin, getRegister
+    axiosInstance, getUsers, getUnknown, getLogin, getRegister, useQuery
 }

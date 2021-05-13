@@ -1,22 +1,32 @@
-import React, {useEffect, useState} from "react";
 import {
     Switch,
     Route,
-    Link
+    Link,
+    Redirect
 } from "react-router-dom";
-import {getUsers} from "../services/api.axios";
+import "./style.css"
+import {Users} from "../components/users/Users";
+import {UserDetails} from "../components/userDetails/UserDetails";
+import {NavButtons} from "./navButtons/NavButtons";
 
-export const Routes =()=>{
-    const [users,setUsers] = useState([]);
-    useEffect(()=>{
-        getUsers().then(value => setUsers([...value.data]))
-    },[])
-
-    return(
+export const Routes = () => {
+    return (
         <div>
-            {
-                users.map(value => console.log(value))
-            }
+            <div className={'nav'}>
+                <Link exact to={'/users'}>
+                    <button>HOME</button>
+                </Link>
+            </div>
+            <Switch>
+                <Route path={'/users'} component={Users}/>
+                <Redirect from="/" to="/users" />
+            </Switch>
+            <div className={'nav-btn'}>
+                <NavButtons />
+            </div>
+            <Switch>
+                <Route path={'/users/:id'} component={UserDetails}/>
+            </Switch>
         </div>
     )
 }

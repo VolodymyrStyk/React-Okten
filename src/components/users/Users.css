@@ -1,0 +1,6 @@
+.wrap-users{
+    border: 1px solid red;
+    margin:0 10px;
+    display: flex;
+    justify-content: space-around;
+}
