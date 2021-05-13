@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Switch,Link,Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
 import "./style.css"
 import {Users} from "../components/users/Users";
 import {UserDetails} from "../components/userDetails/UserDetails";
@@ -7,15 +7,8 @@ import {useEffect, useState} from "react";
 import {getUsers} from "../services/api.axios";
 
 export const Routes = () => {
-    const [pageInfo, setPageInfo] = useState([]);
-    useEffect(() => {
-        getUsers().then(value => setPageInfo(value.data))
-    }, [pageInfo.page])
-    console.log(pageInfo)
-
     return (
         <Router>
-
             <div>
                 <div className={'nav'}>
                     <Link exact to={'/users'}>
@@ -27,7 +20,6 @@ export const Routes = () => {
                     <Redirect from="/" to="/users"/>
                 </Switch>
                 <div className={'nav-btn'}>
-                    <NavButtons/>
                 </div>
                 <Switch>
                     <Route path={'/users/:id'} component={UserDetails}/>

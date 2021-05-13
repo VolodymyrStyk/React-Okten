@@ -1,6 +1,7 @@
 import "./UserDetails.css"
 
 export const UserDetails=(props)=>{
+    console.log(props);
     const {location:{state:{item:{avatar,email,first_name,id,last_name}}}} = props;
     return(
         <div className={'wrap-user-details'}>
