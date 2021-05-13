@@ -1,10 +1,4 @@
-import {
-    Switch,
-    Router,
-    Route,
-    Link,
-    Redirect
-} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch,Link,Redirect} from "react-router-dom";
 import "./style.css"
 import {Users} from "../components/users/Users";
 import {UserDetails} from "../components/userDetails/UserDetails";
