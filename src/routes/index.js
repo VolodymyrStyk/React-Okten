@@ -10,7 +10,7 @@ export const Routes = () => {
     const [pageInfo, setPageInfo] = useState([]);
     useEffect(() => {
         getUsers().then(value => setPageInfo(value.data))
-    }, [])
+    }, [pageInfo.page])
     console.log(pageInfo)
 
     return (
