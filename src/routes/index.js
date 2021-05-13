@@ -1,5 +1,6 @@
 import {
     Switch,
+    Router,
     Route,
     Link,
     Redirect
@@ -11,22 +12,24 @@ import {NavButtons} from "./navButtons/NavButtons";
 
 export const Routes = () => {
     return (
-        <div>
-            <div className={'nav'}>
-                <Link exact to={'/users'}>
-                    <button>HOME</button>
-                </Link>
+        <Router>
+            <div>
+                <div className={'nav'}>
+                    <Link exact to={'/users'}>
+                        <button>HOME</button>
+                    </Link>
+                </div>
+                <Switch>
+                    <Route path={'/users'} component={Users}/>
+                    <Redirect from="/" to="/users"/>
+                </Switch>
+                <div className={'nav-btn'}>
+                    <NavButtons/>
+                </div>
+                <Switch>
+                    <Route path={'/users/:id'} component={UserDetails}/>
+                </Switch>
             </div>
-            <Switch>
-                <Route path={'/users'} component={Users}/>
-                <Redirect from="/" to="/users" />
-            </Switch>
-            <div className={'nav-btn'}>
-                <NavButtons />
-            </div>
-            <Switch>
-                <Route path={'/users/:id'} component={UserDetails}/>
-            </Switch>
-        </div>
+        </Router>
     )
 }
