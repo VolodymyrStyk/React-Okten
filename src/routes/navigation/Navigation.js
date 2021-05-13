@@ -2,6 +2,11 @@ import {Link, Route, Switch} from "react-router-dom";
 import './Navigation.css';
 import {Home} from "../../components/home/Home";
 import {Users} from "../../components/users/Users";
+import {Posts} from "../../components/posts/Posts";
+import {UserDetails} from "../../components/userDetails/UserDetails";
+import {UserPosts} from "../../components/userPosts/UserPosts";
+import {PostDetails} from "../../components/postDetails/PostDetails";
+import {PostComments} from "../../components/postComments/PostComments";
 
 export const Navigation = () => {
     return (
@@ -26,8 +31,13 @@ export const Navigation = () => {
             <Switch>
                 <Route exact path={'/'} component={Home}/>
                 <Route exact path={'/users'} component={Users}/>
+                <Route path={'/users/:id'} component={UserDetails}/>
+                <Route path={'/posts/:id'} component={PostDetails}/>
+                <Route path={'/comments'} component={PostComments}/>
+                <Route path={`/posts`} render={(props) => {
+                    return(window.location?.search?(<UserPosts props={props}/>):(<Posts props={props}/>))
+                }}/>
             </Switch>
         </div>
     );
 }
-

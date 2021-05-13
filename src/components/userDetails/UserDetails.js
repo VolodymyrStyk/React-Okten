@@ -1,7 +1,6 @@
 import './UserDetails.css';
 
 export const UserDetails = (props) => {
-    console.log(props);
     const {location: {state: userInfo}} = props;
     const {name, id, email, phone, username, website, address: {city, street}, company} = userInfo;
     return (

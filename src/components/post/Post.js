@@ -1,30 +1,30 @@
-import './User.css'
+import "./Post.css"
 import {Link} from "react-router-dom";
 
-export const User = ({item, props}) => {
+export const Post = ({item, props}) => {
     const {match: {url}} = props;
-    const {id, name, email} = item;
+    const {id, title} = item;
     const pathDetails = `${url}/${item.id}`;
-    const pathPosts = `/posts`;
+    const pathPosts = `/comments`;
     return (
         <div>
-            <div className={'user-wrap'}>
-                <h3>{`ID:${id} ${name}`}</h3>
-                <p>{`E-mail ${email}`}</p>
+            <div className={'post-wrap'}>
+                <h3>{`Post id:${id}`}</h3>
+                <p><b>Title:  {title}</b></p>
                 <Link to={
                     {
                         pathname: pathDetails,
                         state: item,
                     }}>
-                    <button>User details</button>
+                    <button>Post details</button>
                 </Link>
                 <Link to={
                     {
                         pathname: pathPosts,
                         state: item,
-                        search: `userId=${id}`,
+                        search: `postId=${id}`,
                     }}>
-                    <button>User Posts</button>
+                    <button>Post Comments</button>
                 </Link>
             </div>
         </div>

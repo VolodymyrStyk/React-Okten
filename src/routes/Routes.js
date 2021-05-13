@@ -1,12 +1,12 @@
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {Navigation} from "./navigation/Navigation";
 import {UserDetails} from "../components/userDetails/UserDetails";
+import {UserPosts} from "../components/userPosts/UserPosts";
 
 const Routes = () => {
     return (
         <Router>
             <Navigation/>
-            <Route  path={'/users/user-details/:id'} component={UserDetails}/>
         </Router>
     )
 }

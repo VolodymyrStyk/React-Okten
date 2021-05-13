@@ -8,7 +8,6 @@ export const Users = (props) => {
     useEffect(() => {
         getUsers().then(value => setUsers([...value.data]));
     }, []);
-
     return (
         <div>
             <h2>Users Page</h2>
