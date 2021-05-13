@@ -4,15 +4,19 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import {getUsers} from "../services/api.axios";
 
 export const Routes =()=>{
     const [users,setUsers] = useState([]);
     useEffect(()=>{
-        get
+        getUsers().then(value => setUsers([...value.data]))
     },[])
+
     return(
         <div>
-
+            {
+                users.map(value => console.log(value))
+            }
         </div>
     )
 }

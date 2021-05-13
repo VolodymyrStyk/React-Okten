@@ -16,6 +16,6 @@ const getRegister = ()=>{
 const getLogin = ()=>{
     return axiosInstance.get('/login');
 }
-return{
+export {
     axiosInstance, getUsers, getUnknown, getLogin, getRegister
 }
