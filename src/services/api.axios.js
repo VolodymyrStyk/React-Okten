@@ -25,5 +25,5 @@ function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 export {
-    axiosInstance, getUsers, getUnknown, getLogin, getRegister, useQuery
+    axiosInstance, option, getUsers, getUnknown, getLogin, getRegister, useQuery
 }

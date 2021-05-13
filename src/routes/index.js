@@ -3,10 +3,19 @@ import "./style.css"
 import {Users} from "../components/users/Users";
 import {UserDetails} from "../components/userDetails/UserDetails";
 import {NavButtons} from "./navButtons/NavButtons";
+import {useEffect, useState} from "react";
+import {getUsers} from "../services/api.axios";
 
 export const Routes = () => {
+    const [pageInfo, setPageInfo] = useState([]);
+    useEffect(() => {
+        getUsers().then(value => setPageInfo(value.data))
+    }, [])
+    console.log(pageInfo)
+
     return (
         <Router>
+
             <div>
                 <div className={'nav'}>
                     <Link exact to={'/users'}>

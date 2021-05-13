@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {getUsers} from "../../services/api.axios";
+import {axiosInstance, getUsers} from "../../services/api.axios";
 import {User} from "../user/User";
 import "./Users.css"
 
 export const Users = (props)=>{
+    console.log(props)
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        getUsers().then(value => setUsers([...value.data.data]))
+        axiosInstance.get('/users?page=1').then(value => setUsers([...value.data.data]))
     }, [])
     return (
         <div>
