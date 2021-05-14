@@ -21,7 +21,6 @@ export const Users = (props) => {
         }
     }
     useEffect(() => {
-        console.log('effect:',counter);
         axiosInstance.get('/users?page=' + counter).then(value => setUsers([...value.data.data]))
     }, [counter])
 

@@ -4,9 +4,10 @@ import {Users} from "../components/users/Users";
 import {UserDetails} from "../components/userDetails/UserDetails";
 import {NavButtons} from "./navButtons/NavButtons";
 import {useEffect, useState} from "react";
-import {getUsers} from "../services/api.axios";
+import {axiosInstance, getUsers} from "../services/api.axios";
 
 export const Routes = () => {
+
     return (
         <Router>
             <div>
