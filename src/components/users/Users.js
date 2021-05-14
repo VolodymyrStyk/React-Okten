@@ -2,31 +2,32 @@ import React, {useEffect, useState} from "react";
 import {axiosInstance, getUsers} from "../../services/api.axios";
 import {User} from "../user/User";
 import "./Users.css"
-import {NavButtons} from "../../routes/navButtons/NavButtons";
 import {Link} from "react-router-dom";
 
-export const Users = ({props,data}) => {
-    console.log(props);
-    console.log(data);
-    let {page,total_pages,data:usersData} = data
-    console.log(usersData);
-    const [users, setUsers] = useState([usersData]);
+export const Users = (props) => {
 
-    // const back = (counter) => {
-    //     --counter;
-    //     if (counter >= 1) {
-    //         return setCounter(counter);
-    //     }
-    // }
-    // const next = (counter) => {
-    //     ++counter;
-    //     if (counter <= 2) {
-    //         return setCounter(counter);
-    //     }
-    // }
+
+
+    const [users, setUsers] = useState([]);
+    let [counter, setCounter] = useState(1);
+    const back = (counter) => {
+        --counter;
+        if (counter >= 1) {
+            return setCounter(counter);
+        }
+    }
+    const next = (counter) => {
+        ++counter;
+        if (counter <= 2) {
+            return setCounter(counter);
+        }
+    }
+    console.log(counter)
     useEffect(() => {
-        axiosInstance.get('/users?page=' + data.page).then(value => setUsers([...value.data.data]))
-    }, [data.page])
+        axiosInstance.get('/users?page=' + counter).then(value => {
+            setUsers([...value.data.data])
+        })
+    }, [counter])
 
     return (
         <div>
@@ -38,15 +39,15 @@ export const Users = ({props,data}) => {
             <div>
                 <Link to={{
                     pathname: `/users`,
-                    search: `page=${data.page}`
+                    search: `page=${counter}`
                 }}>
-                    <button onClick={() => --data.page}>Back</button>
+                    <button onClick={() => back(counter)}>Back</button>
                 </Link>
                 <Link to={{
                     pathname: `/users`,
-                    search: `page=${data.page}`
+                    search: `page=${counter}`
                 }}>
-                    <button onClick={() => ++data.page}>Next</button>
+                    <button onClick={() => next(counter)}>Next</button>
                 </Link>
             </div>
         </div>
