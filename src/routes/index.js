@@ -7,17 +7,28 @@ import {useEffect, useState} from "react";
 import {axiosInstance, getUsers} from "../services/api.axios";
 
 export const Routes = () => {
+    const [data, setData] = useState([]);
 
+    useEffect(() => {
+        getUsers().then(value => setData(value.data))
+    }, [])
+    console.log(data);
     return (
         <Router>
             <div>
                 <div className={'nav'}>
-                    <Link exact to={'/users'}>
+                    <Link to={{
+                        pathname: `/users`,
+                        search: `page=${data.page}`
+                    }}>
                         <button>HOME</button>
                     </Link>
                 </div>
                 <Switch>
-                    <Route path={'/users'} component={Users}/>
+                    {/*<Route exact={true} path={'/users'} component={Users}/>*/}
+                    <Route exact path={`/users`} render={(props) => {
+                        return <Users data = {data} props={props}/>
+                    }}/>
                     <Redirect from="/" to="/users"/>
                 </Switch>
                 <div className={'nav-btn'}>
