@@ -3,11 +3,9 @@ import {axiosInstance, getUsers} from "../../services/api.axios";
 import {User} from "../user/User";
 import "./Users.css"
 import {Link} from "react-router-dom";
+import {MyContext} from "../../routes";
 
 export const Users = (props) => {
-
-
-
     const [users, setUsers] = useState([]);
     let [counter, setCounter] = useState(1);
     const back = (counter) => {
@@ -22,7 +20,6 @@ export const Users = (props) => {
             return setCounter(counter);
         }
     }
-    console.log(counter)
     useEffect(() => {
         axiosInstance.get('/users?page=' + counter).then(value => {
             setUsers([...value.data.data])
@@ -49,6 +46,7 @@ export const Users = (props) => {
                 }}>
                     <button onClick={() => next(counter)}>Next</button>
                 </Link>
+
             </div>
         </div>
     )
