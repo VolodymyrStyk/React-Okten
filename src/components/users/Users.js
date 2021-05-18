@@ -5,9 +5,10 @@ import "./Users.css"
 import {Link} from "react-router-dom";
 
 export const Users = (props) => {
-
-
-
+    console.log(props)
+    const {location:{search,state}} = props;
+    const {data,page,total_pages} = state;
+    console.log(total_pages)
     const [users, setUsers] = useState([]);
     let [counter, setCounter] = useState(1);
     const back = (counter) => {
@@ -22,7 +23,7 @@ export const Users = (props) => {
             return setCounter(counter);
         }
     }
-    console.log(counter)
+    // console.log(counter)
     useEffect(() => {
         axiosInstance.get('/users?page=' + counter).then(value => {
             setUsers([...value.data.data])

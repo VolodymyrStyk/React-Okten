@@ -3,17 +3,24 @@ import "./style.css"
 import {Users} from "../components/users/Users";
 import {UserDetails} from "../components/userDetails/UserDetails";
 import {useEffect, useState} from "react";
-import {getUsers} from "../services/api.axios";
+import {axiosInstance, getUsers} from "../services/api.axios";
 
 export const Routes = () => {
-
+    const [pageData, setPageData] = useState({});
+    // console.log(pageData)
+    useEffect(() => {
+        getUsers().then(value => {
+            // console.log(value.data)
+            setPageData(value.data)
+        })
+    }, [])
     return (
         <Router>
             <div>
                 <div className={'nav'}>
                     <Link to={{
                         pathname: `/users`,
-                        search: `page=1`,
+                        state: pageData
                     }}>
                         <button>HOME</button>
                     </Link>
