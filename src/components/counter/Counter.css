@@ -1,23 +1,24 @@
-.wrap-counterApp{
-    display: flex;
+.wrap-counterApp {
+    display: block;
     justify-content: center;
     align-items: center;
     min-height: fit-content;
     font-size: 24px;
-
 }
-.wrap-counter{
+
+.wrap-counter {
     border: 3px solid silver;
     min-width: fit-content;
     width: 100px;
-    margin:30px auto;
+    margin: 30px auto;
     border-radius: 20px;
     padding: 50px;
-
 }
-.counter-data{
+
+.counter-data {
     font-size: 3em;
 }
+
 .button {
     display: inline-block;
     padding: 15px 25px;
@@ -34,15 +35,30 @@
     margin: 10px;
 }
 
-.button:hover {background-color: #3e8e41}
+.button:hover {
+    background-color: #3e8e41
+}
 
 .button:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
+
 input[type=number] {
-    padding:10px;
-    margin:10px 0;
+    padding: 10px;
+    margin: 10px 0;
     font-size: 24px;
+}
+
+.change-color {
+    width: 100%;
+}
+
+.light {
+    background-color: antiquewhite;
+}
+
+.black {
+    background-color: #999999;
 }

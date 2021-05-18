@@ -1,11 +1,21 @@
 import {reducer} from "../reducer/reducer";
-import {useReducer} from "react";
+import React, {useReducer} from "react";
 import './Counter.css'
+import {CounterView} from "./counterView/CounterView";
+import {MyContext} from "../../routes";
+import {CounterStep} from "./counterStep/CounterStep";
+import {CounterSet} from "./counterSet/CounterSet";
+import {CounterControlButton} from "./counterControlButton/CounterControlButton";
+import {CounterChangeTheme} from "./counterChangeTheme/CounterChangeTheme";
+
+
 
 export const Counter = () => {
 
-    const [state, dispatch] = useReducer(reducer, {counter: 0, digit: 0, changeDigit: 1});
-    let {counter, digit, changeDigit} = state;
+    const [state, dispatch] = useReducer(reducer,
+        {counter: 0, digit: 0, changeDigit: 1, color: 'light'});
+    let {counter, digit, changeDigit, color} = state;
+
     const changeCount = (action, digit) => {
         dispatch({type: action, payload: digit});
     }
@@ -15,44 +25,24 @@ export const Counter = () => {
         dispatch({type: 'SET_COUNT', payload: changeDigit});
         e.preventDefault();
     }
+    const  changeTheme = (color) => {
+        return dispatch({
+            type: 'CHANGE_COLOR',
+            payload: color === 'light' ? color = 'black' : color = 'light'
+        })
+    }
 
     return (
         <div className={'wrap-counterApp'}>
-            <div className={'wrap-counter'}>
-                <div className={'counter-data'}>
-                    Counter : {counter}
+            <MyContext.Provider value={{counter, digit, onSubmit, changeCount, changeDigit, color,changeTheme}}>
+                <div className={`wrap-counter ${color}`}>
+                    <CounterView/>
+                    <CounterStep/>
+                    <CounterSet/>
+                    <CounterControlButton/>
+                    <CounterChangeTheme/>
                 </div>
-                <div>
-                    <form onSubmit={onSubmit}>
-                        <input type="number" defaultValue={digit} name={'setChangeDigit'}/>
-                        <button className={'button'}>Change counter</button>
-                    </form>
-                </div>
-                <div>
-                    <input type="number" defaultValue={digit} name={'setIntialDigit'}/>
-                    <button onClick={() => {
-                        digit = Number(document.getElementsByName('setIntialDigit')[0].value);
-                        changeCount("SET_INIT", digit)
-                    }}  className={'button'}>Set Counter
-                    </button>
-                </div>
-                <div>
-                    <button onClick={() => {
-                        changeCount("INC", changeDigit)
-                    }}  className={'button'}>Inc + {changeDigit}
-                    </button>
-                    <button onClick={() => {
-                        changeCount("DEC", changeDigit)
-                    }}  className={'button'}>Dec - {changeDigit}
-                    </button>
-                    <button onClick={() => {
-                        document.getElementsByName('setIntialDigit')[0].value = 0;
-                        document.getElementsByName('setChangeDigit')[0].value = 0;
-                        changeCount("RES")
-                    }}  className={'button'}>Res
-                    </button>
-                </div>
-            </div>
+            </MyContext.Provider>
         </div>
     );
 }

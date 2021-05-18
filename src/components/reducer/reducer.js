@@ -27,6 +27,11 @@ export const reducer = (state, action) => {
                 ...state,
                 changeDigit: action.payload,
             }
+        case 'CHANGE_COLOR':
+            return {
+                ...state,
+                color: action.payload
+            };
         default:
             return {
                 ...state

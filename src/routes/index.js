@@ -4,14 +4,15 @@ import {
     Route,
 } from "react-router-dom";
 import {Counter} from "../components/counter/Counter";
-const MyContext = createContext('');
+export let MyContext = createContext('Default');
 
 export const Routes = () => {
     return (
         <div>
             <Router>
-                <MyContext.P
+                <MyContext.Provider value={''}>
                 <Route path={'/'} component={Counter}/>
+                </MyContext.Provider>
             </Router>
         </div>
     );
