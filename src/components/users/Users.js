@@ -8,7 +8,7 @@ export const Users = (props) => {
     console.log(props)
     const {location:{search,state}} = props;
     const {data,page,total_pages} = state;
-    console.log(total_pages)
+    console.log(total_pages  )
     const [users, setUsers] = useState([]);
     let [counter, setCounter] = useState(1);
     const back = (counter) => {
