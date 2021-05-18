@@ -7,9 +7,12 @@ import {UserDetails} from "../../components/userDetails/UserDetails";
 import {UserPosts} from "../../components/userPosts/UserPosts";
 import {PostDetails} from "../../components/postDetails/PostDetails";
 import {PostComments} from "../../components/postComments/PostComments";
+import {PostReducer} from "../../components/postReducer/PostReducer";
 
 export const Navigation = () => {
     return (
+
+
         <div>
             <ul className={'nam-menu'}>
                 <li>
@@ -27,6 +30,11 @@ export const Navigation = () => {
                         <button>Posts</button>
                     </Link>
                 </li>
+                <li>
+                    <Link to={'/posts-reducer'}>
+                        <button>PostsReducer</button>
+                    </Link>
+                </li>
             </ul>
             <Switch>
                 <Route exact path={'/'} component={Home}/>
@@ -37,6 +45,7 @@ export const Navigation = () => {
                 <Route path={`/posts`} render={(props) => {
                     return(window.location?.search?(<UserPosts props={props}/>):(<Posts props={props}/>))
                 }}/>
+                <Route path={'/posts-reducer'} component={PostReducer}/>
             </Switch>
         </div>
     );
