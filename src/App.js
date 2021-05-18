@@ -10,12 +10,12 @@ const reducer = (state, action) => {
         case 'CHANGE_TEXT':
             return {
                 ...state,
-                text.action.payload
+                text: action.payload
             };
         case 'CHANGE_COLOR':
             return {
                 ...state,
-                color.action.payload
+                color: action.payload
             };
     }
 
@@ -26,12 +26,15 @@ function App() {
     // let [txt, setTxt] = useState('Hello');
     // let [color, setColor] = useState('light');
 
-    const [state, dispatch] = useReducer(reducer, {text: 'Hello', color: 'light'});
+    const [state, dispatch] = useReducer(reducer, {
+        text: 'Hello',
+        color: 'light'
+    });
     let {text, color} = state;
 
 
     let changeContext = (change) => {
-        return dispatch({type:'CHANGE_TEXT', payload: change});
+        return dispatch({type: 'CHANGE_TEXT', payload: change});
     }
 
     return (
@@ -50,13 +53,21 @@ function App() {
                 }}>Bye
                 </button>
             </div>
-            <MyContext.Provider value={{txt, color}}>
+            <MyContext.Provider value={{text, color}}>
                 <Parent/>
             </MyContext.Provider>
             <div>
                 <button onClick={() => {
-                    return dispatch({type:'CHANGE_COLOR',payload:color === 'light' ? color = 'black' : color = 'light'})
-                }}>Change Color
+                    return dispatch({
+                        type: 'CHANGE_COLOR',
+                        payload: color === 'light' ? color = 'black' : color = 'light'
+                    })
+                }}>Change Color<span role="img" aria-label="sun">
+            🌞
+          </span>
+                    <span role="img" aria-label="moon">
+            🌚
+          </span>
                 </button>
             </div>
         </div>
