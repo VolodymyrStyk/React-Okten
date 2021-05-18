@@ -6,23 +6,32 @@ import {createContext, useContext, useReducer, useState} from "react";
 export let MyContext = createContext('Default')
 
 const reducer = (state, action) => {
-    switch (action.type)
-        case:('CHANGE_TEXT'){
-        return{
-            ...state,
-
-        }
+    switch (action.type) {
+        case 'CHANGE_TEXT':
+            return {
+                ...state,
+                text.action.payload
+            };
+        case 'CHANGE_COLOR':
+            return {
+                ...state,
+                color.action.payload
+            };
     }
+
+
 }
 
 function App() {
-    let [txt, setTxt] = useState('Hello');
-    let [color, setColor] = useState('light');
+    // let [txt, setTxt] = useState('Hello');
+    // let [color, setColor] = useState('light');
 
-    const [txt,color] = useReducer(reducer(state,action))
+    const [state, dispatch] = useReducer(reducer, {text: 'Hello', color: 'light'});
+    let {text, color} = state;
+
 
     let changeContext = (change) => {
-        return dispatch(reducer(actichange);
+        return dispatch({type:'CHANGE_TEXT', payload: change});
     }
 
     return (
@@ -46,7 +55,7 @@ function App() {
             </MyContext.Provider>
             <div>
                 <button onClick={() => {
-                    return setColor(color === 'light' ? color = 'black' : color = 'light');
+                    return dispatch({type:'CHANGE_COLOR',payload:color === 'light' ? color = 'black' : color = 'light'})
                 }}>Change Color
                 </button>
             </div>
