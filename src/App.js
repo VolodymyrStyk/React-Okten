@@ -19,7 +19,7 @@ function App() {
     let [txt, setTxt] = useState('Hello');
     let [color, setColor] = useState('light');
 
-    const [txt,color] = useReducer(reducer, state{txt:'hello', color:'light'})
+    const [txt,color] = useReducer(reducer(state,action))
 
     let changeContext = (change) => {
         return dispatch(reducer(actichange);
