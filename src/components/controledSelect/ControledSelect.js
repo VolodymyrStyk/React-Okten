@@ -31,6 +31,7 @@ export const ControledSelect = () => {
     };
     return (
         <div>
+            <div>Without Reducer</div>
             <form onSubmit={getUsersDetails}>
                 <select name="user" id="" onChange={onSelectChange}>
                     {

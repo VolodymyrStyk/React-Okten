@@ -53,7 +53,7 @@ export const ControledSelectReducer = () => {
     };
     return (
         <div>
-            <div>Reducer</div>
+            <div>With Reducer</div>
             <form>
                 <select onChange={onchangeUser} name={'user'}>
                     {
