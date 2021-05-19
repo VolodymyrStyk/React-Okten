@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 
 export const Counter = () => {
-    const counter = useSelector((state) => state);
+    const counter = useSelector((state) => state).todo;
     console.log(counter);
     const dispatch = useDispatch();
     const [value, setValue] = useState();
@@ -20,7 +20,7 @@ export const Counter = () => {
             }/>
             <div>
                 <button onClick={() => {
-                    dispatch({type: 'ADD'})
+                    dispatch({type: 'ADD', payload:value})
                 }}>Add
                 </button>
 

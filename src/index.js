@@ -6,7 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 
-const toDo = ['asd','asd']
+const toDo = {
+    todo: ['asd']
+}
 
 const reducer = (state = toDo, action) => {
     switch (action.type) {
@@ -26,14 +28,19 @@ const reducer = (state = toDo, action) => {
                 counter: 0
             };
         case 'INC_CST':
+
             return {
+
                 ...state,
                 counter: state.counter + action.payload
             };
         case 'ADD':
+            console.log('s: ', state)
+            const len = state.todo.length;
+            console.log('len: ', len)
             return {
                 ...state,
-                // push(action.payload)
+                todo: state.todo.push(action.payload)
             };
         default:
             return state;
@@ -44,7 +51,6 @@ const store = createStore(reducer);
 store.subscribe(() => {
     console.log('tut', store.getState());
 });
-
 
 
 ReactDOM.render(
