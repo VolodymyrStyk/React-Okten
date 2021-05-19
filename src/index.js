@@ -6,12 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 
-const initialState = {
-    counter: 0,
-    counter2: 0
-}
+const toDo = ['asd','asd']
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = toDo, action) => {
     switch (action.type) {
         case 'INC':
             return {
@@ -32,6 +29,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 counter: state.counter + action.payload
+            };
+        case 'ADD':
+            return {
+                ...state,
+                // push(action.payload)
             };
         default:
             return state;
