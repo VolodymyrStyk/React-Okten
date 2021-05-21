@@ -1,12 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import {Posts} from "./components/posts/Posts";
+import {Comments} from "./components/comments/Comments";
 
 function App() {
-  return (
-    <div >
-
-    </div>
-  );
+    return (
+        <div>
+            {/*<Posts/>*/}
+            <Comments/>
+        </div>
+    );
 }
 
 export default App;
