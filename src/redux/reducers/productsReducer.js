@@ -13,44 +13,62 @@ const initialState = {
 
 export const productsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_PRODUCTS:
+        case SET_PRODUCTS: {
             return {
                 ...state,
                 products: action.payload
             }
-        case SET_PRODUCTS_LOADING:
+        }
+        case SET_PRODUCTS_LOADING: {
             return {
                 ...state,
                 isProductLoading: true
             }
-        case RESET_PRODUCTS_LOADING:
+        }
+        case RESET_PRODUCTS_LOADING: {
             return {
                 ...state,
                 isProductLoading: false
             }
-        case ADD_TO_WISHLIST:
+        }
+        case ADD_TO_WISHLIST: {
+            // id of product
             const {payload} = action;
-            const alreadyExists = state.wishList.find();
+            const alreadyExists = state.wishList.find(({id}) => id === payload);
+            if (alreadyExists) {
+                return state;
+            }
+            const itemInProducts = state.products.find(el => el.id === payload);
             return {
                 ...state,
-                wishList: []
+                wishList: [...state.wishList, itemInProducts]
             }
-        case REMOVE_FROM_WISHLIST:
+        }
+        case REMOVE_FROM_WISHLIST: {
+            const {payload} = action;
+            const isMissing = !state.wishList.find(({id}) => id === payload);
+            if (isMissing) {
+                return state;
+            }
             return {
                 ...state,
-                wishList: []
+                wishList: state.wishList.filter(el => el.id !== payload)
             }
-        case ADD_TO_CART:
+        }
+        case ADD_TO_CART: {
             return {
                 ...state,
                 cart: []
             }
-        case REMOVE_FROM_CART:
+        }
+        case REMOVE_FROM_CART: {
             return {
                 ...state,
                 cart: []
             }
-        default:
+        }
+        default: {
             return state;
+        }
     }
 }

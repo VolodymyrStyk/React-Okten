@@ -1,4 +1,9 @@
-import {SET_PRODUCTS, RESET_PRODUCTS_LOADING, SET_PRODUCTS_LOADING} from "../actionTypes";
+import {
+    SET_PRODUCTS,
+    RESET_PRODUCTS_LOADING,
+    SET_PRODUCTS_LOADING,
+    ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST
+} from "../actionTypes";
 
 export const fetchProducts = (sortOptions) => async (dispatch) => {
     try {
@@ -22,3 +27,6 @@ export const fetchProducts = (sortOptions) => async (dispatch) => {
 export const setProducts = (payload) => ({type: SET_PRODUCTS, payload});
 export const setProductsLoading = () => ({type: SET_PRODUCTS_LOADING});
 export const resetProductsLoading = () => ({type: RESET_PRODUCTS_LOADING});
+
+export const addToWishList = (payload) => ({type: ADD_TO_WISHLIST, payload});
+export const removeFromWishlist = (payload) => ({type: REMOVE_FROM_WISHLIST, payload});

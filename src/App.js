@@ -2,10 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchProducts} from "./redux";
+import {addToWishList, fetchProducts, removeFromWishlist} from "./redux";
 
 
 const Header = () => {
+    const {wishList} = useSelector(({products}) => products);
+    const wishListTotalPrice = wishList.reduce((acc, el) => {
+        return (acc += el.price);
+    }, 0);
     return (
         <div>
             <header style={{
@@ -19,7 +23,8 @@ const Header = () => {
                     alignItems: "center"
                 }}>
                     <h3 style={{marginRight: '20px'}}>Cart: {0}</h3>
-                    <h3 style={{marginRight: '20px'}}>Wish List: {0}</h3>
+                    <h3 title={wishListTotalPrice} style={{marginRight: '20px'}}>Wish
+                                                                                 List: {wishList.length}</h3>
                 </div>
             </header>
             <hr/>
@@ -27,7 +32,10 @@ const Header = () => {
     );
 }
 
+const isInWishList = (wishlist, id) => wishlist.find(el => el.id === id);
+
 const Products = () => {
+    const {wishList} = useSelector(({products}) => products);
     const dispatch = useDispatch();
     const {products, isProductLoading} = useSelector(({products}) => products)
 
@@ -38,7 +46,6 @@ const Products = () => {
         }));
     }, []);
 
-    console.log(products);
     if (isProductLoading) {
         return <div style={{textAlign: 'center'}}>Loading!</div>;
     }
@@ -51,7 +58,20 @@ const Products = () => {
                         width: '70%',
                         margin: '20px auto'
                     }}>
-                        <h4>{product.title}</h4>
+                        <button onClick={() => {
+                            isInWishList(wishList, product.id) ?
+                                dispatch(removeFromWishlist(product.id)) :
+                                dispatch(addToWishList(product.id));
+                        }
+                        }>{isInWishList(wishList, product.id) ?
+                            'remove from wish List' :
+                            'add to wish list'}
+                        </button>
+
+                        <h4>
+                            {product.title} <br/>
+                            Price: {product.price}
+                        </h4>
                         <p>{product.description}</p>
                         <img style={{
                             width: '80%',
